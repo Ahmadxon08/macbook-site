@@ -7,19 +7,19 @@ const Hero = () => {
   }, []);
   return (
     <section id="hero">
-      <div className="">
+      <div>
         <h1>MacBook Pro</h1>
         <img src="./title.png" alt="macbook title" />
-        <video
-          ref={videoRef}
-          src="./videos/hero.mp4"
-          autoPlay
-          playsInline
-          muted
-        />
-        <button>Buy</button>
-        <p>From $1550 or $133/mo for 12 months</p>
       </div>
+      <video
+        ref={videoRef}
+        src="./videos/hero.mp4"
+        autoPlay
+        playsInline
+        muted
+      />
+      <button>Buy</button>
+      <p>From $1550 or $133/mo for 12 months</p>
     </section>
   );
 };
