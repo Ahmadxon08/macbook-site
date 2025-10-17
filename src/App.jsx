@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Showcase from "./components/Showcase";
 import Performence from "./components/Performence";
+import Features from "./components/Features";
 
 gsap.registerEffect(ScrollTrigger);
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <ProductViewer />
       <Showcase />
       <Performence />
+      <Features />
     </main>
   );
 };
