@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import StudioLight from "./three/StudioLight";
 import { features, featureSequence } from "../constants";
 import clsx from "clsx";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Suspense, useEffect, useRef } from "react";
 import { Mackbook } from "./models/Macbook";
 import { useMediaQuery } from "react-responsive";
@@ -9,11 +10,12 @@ import { Html } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import useMacBookStore from "../store";
+gsap.registerPlugin(ScrollTrigger);
 
 const ModelScroll = () => {
   const groupRef = useRef();
 
-  const { setTexure } = useMacBookStore();
+  const { setTexture } = useMacBookStore();
 
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
@@ -25,7 +27,7 @@ const ModelScroll = () => {
         crossOrigin: "Anonymous",
         muted: true,
         preload: "auto",
-        playInline: true,
+        playsInline: true,
       });
       videoSrc.load();
     });
@@ -34,7 +36,7 @@ const ModelScroll = () => {
   useGSAP(() => {
     const modelTimeline = gsap.timeline({
       scrollTrigger: {
-        trigger: "f-canvas",
+        trigger: "#f-canvas",
         start: "top top",
         end: "bottom end",
         scrub: 1,
@@ -46,7 +48,7 @@ const ModelScroll = () => {
 
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: "f-canvas",
+        trigger: "#f-canvas",
         start: "top center",
         end: "bottom top",
         scrub: 1,
@@ -63,15 +65,15 @@ const ModelScroll = () => {
     }
 
     timeline
-      .call(() => setTexure("/videos/feature-1.mp4"))
+      .call(() => setTexture("/videos/feature-1.mp4"))
       .to(".box", { opacity: 1, y: 0, delay: 1 })
-      .call(() => setTexure("/videos/feature-2.mp4"))
+      .call(() => setTexture("/videos/feature-2.mp4"))
       .to(".box1", { opacity: 1, y: 0 })
-      .call(() => setTexure("/videos/feature-3.mp4"))
+      .call(() => setTexture("/videos/feature-3.mp4"))
       .to(".box2", { opacity: 1, y: 0 })
-      .call(() => setTexure("/videos/feature-4.mp4"))
+      .call(() => setTexture("/videos/feature-4.mp4"))
       .to(".box3", { opacity: 1, y: 0 })
-      .call(() => setTexure("/videos/feature-5.mp4"))
+      .call(() => setTexture("/videos/feature-5.mp4"))
       .to(".box4", { opacity: 1, y: 0 });
   }, []);
 
